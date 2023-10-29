@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "dev": "NODE_ENV=development nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb NODE_ENV=production server.js",
@@ -48,5 +48,8 @@
     "eslint-plugin-react": "^7.33.2",
     "parcel-bundler": "^1.12.5",
     "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
