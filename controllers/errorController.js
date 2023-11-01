@@ -6,7 +6,14 @@ const handleCastErrorDB = (err) => {
   return new AppError(message, 400);
 };
 const handleDuplicateFieldsDB = (err) => {
-  const message = `Duplicate fields value  (${err.keyValue.name}) please use another value`;
+  const duplicateFields = [];
+  for (let [key, value] of Object.entries(err.keyValue)) {
+    return duplicateFields.push(value);
+  }
+
+  const message = `Duplicate fields value  (${duplicateFields.join(
+    ' ',
+  )}) please use another value`;
   return new AppError(message, 400);
 };
 const handleValidationErrorDB = (err) => {
@@ -25,8 +32,8 @@ const sendErrorDev = (error, req, res) => {
     res.status(error.statusCode).json({
       status: error.status,
       message: error.message,
-      // error,
-      // stack: error.stack,
+      error,
+      stack: error.stack,
     });
   } else {
     res.status(error.statusCode).render('error', {
