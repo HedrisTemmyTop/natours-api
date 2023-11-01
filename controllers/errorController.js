@@ -7,10 +7,11 @@ const handleCastErrorDB = (err) => {
 };
 const handleDuplicateFieldsDB = (err) => {
   const duplicateFields = [];
+  console.log(err);
   for (let [key, value] of Object.entries(err.keyValue)) {
-    return duplicateFields.push(value);
+    duplicateFields.push(value);
   }
-
+  console.log(duplicateFields);
   const message = `Duplicate fields value  (${duplicateFields.join(
     ' ',
   )}) please use another value`;
@@ -62,7 +63,6 @@ const sendErrorProd = (error, res, req) => {
       return res.status(500).json({
         status: 'error',
         message: 'Something went wrong',
-        error,
       });
     }
   }
