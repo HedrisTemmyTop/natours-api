@@ -25,8 +25,8 @@ const sendErrorDev = (error, req, res) => {
     res.status(error.statusCode).json({
       status: error.status,
       message: error.message,
-      error,
-      stack: error.stack,
+      // error,
+      // stack: error.stack,
     });
   } else {
     res.status(error.statusCode).render('error', {
